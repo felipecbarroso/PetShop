@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace PetShop
 {
@@ -8,32 +9,52 @@ namespace PetShop
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Data DD/MM/YYYY, qtd pequeno, qtd grande");
-            string texto = Console.ReadLine();
-            string[] colunas = texto.Split(',');
-            DateTime date = Convert.ToDateTime(colunas[0]);
-            int littleDogs = Convert.ToInt32(colunas[1]);
-            int bigDogs = Convert.ToInt32(colunas[2]);
+            string path = @"C:\Users\felip\Desktop\dti.txt";
+            if (path != null)
+            {
+                using (StreamReader sr = new StreamReader(path))
+                {
+                    while (sr.Peek() >= 0)
+                    {
 
-            //Console.Write("Quantos cachorros pequenos: ");
-            //int littleDogs = Convert.ToInt32(Console.ReadLine());
-            //Console.Write("Quantos cachorros grandes: ");
-            //int bigDogs = Convert.ToInt32(Console.ReadLine());
-            //Console.Write("Para qual dia DD/MM/YYYY ");
-            //DateTime date = Convert.ToDateTime(Console.ReadLine());
+                        string texto = sr.ReadLine();
+                        string[] colunas = texto.Split(',');
+                        InputData Data = new InputData(Convert.ToDateTime(colunas[0]),
+                           Convert.ToInt32(colunas[1]),
+                           Convert.ToInt32(colunas[2]));
 
-            //Criar metodo para instanciar
-            CaninoFeliz caninoFeliz = new CaninoFeliz(date, littleDogs, bigDogs);
-            VaiRex vaiRex = new VaiRex(date, littleDogs, bigDogs);
-            ChowChawgas chowChawgas = new ChowChawgas(date, littleDogs, bigDogs);
-
-            caninoFeliz.Calculate();
-            vaiRex.Calculate();
-            chowChawgas.Calculate();
-
-            Calculator.CalculateLower(caninoFeliz.Total, vaiRex.Total, chowChawgas.Total);
+                        Data.Calculate(Data);
 
 
+                        foreach (var item in Data.Pets)
+                        {
+                            Console.WriteLine("{0} - {1}", item.Name, item.Total);
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("Data DD/MM/YYYY, qtd pequeno, qtd grande");
+                string texto = Console.ReadLine();
+                string[] colunas = texto.Split(',');
+                InputData Data = new InputData(Convert.ToDateTime(colunas[0]),
+                   Convert.ToInt32(colunas[1]),
+                   Convert.ToInt32(colunas[2]));
+
+                Data.Calculate(Data);
+
+
+                foreach (var item in Data.Pets)
+                {
+                    Console.WriteLine("{0} - {1}", item.Name, item.Total);
+                }
+            }
         }
     }
 }
+
+
+
+

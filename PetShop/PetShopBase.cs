@@ -6,9 +6,8 @@ namespace PetShop
 {
     public class PetShopBase
     {
-        public DateTime Date { get; set; }
-        public int LittleDogs { get; set; }
-        public int BigDogs { get; set; }
+        public string Name { get; set; }
+        public double Distance { get; set; }
         public double Total { get; set; }
     }
 }
