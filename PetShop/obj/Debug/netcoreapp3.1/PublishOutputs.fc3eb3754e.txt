@@ -1,0 +1,5 @@
+C:\Users\felip\source\repos\PetShop\PetShop\bin\Debug\netcoreapp3.1\publish\PetShop.exe
+C:\Users\felip\source\repos\PetShop\PetShop\bin\Debug\netcoreapp3.1\publish\PetShop.dll
+C:\Users\felip\source\repos\PetShop\PetShop\bin\Debug\netcoreapp3.1\publish\PetShop.deps.json
+C:\Users\felip\source\repos\PetShop\PetShop\bin\Debug\netcoreapp3.1\publish\PetShop.runtimeconfig.json
+C:\Users\felip\source\repos\PetShop\PetShop\bin\Debug\netcoreapp3.1\publish\PetShop.pdb
